@@ -1,0 +1,189 @@
+:root {
+  --primary-blue: #1E88E5;
+  --dark-blue: #0D2436;
+  --white: #ffffff;
+  --text-dark: #0D2436;
+}
+
+.idverification-page {
+  min-height: 100vh;
+  width: 100%;
+  background:url('/assets/images/bookingdetails/bookingtop.png') no-repeat top center;
+  background-size: contain;
+
+}
+.idverification-container {
+  
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.idverification-header {
+  display: flex;
+gap: 170px;
+  width: 95%;
+  align-items: center;
+  margin-bottom: 30px;
+  margin-top: 20px;
+margin-left: 70px;;
+}
+
+.idlogo-section {
+  display: flex;
+  align-items: center;
+}
+
+.idhome-icon-id img{
+  background-color: var(--white);
+  border-radius: 12px;
+  /* width: 48px;
+  height: 48px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 16px;
+}
+
+.idverification-title {
+  color: var(--white);
+  font-size: 42px;
+  font-weight: 600;
+  margin-left: 30px;
+}
+
+.idverification-card {
+  background-color: var(--white);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+
+.idback-button {
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--white);
+  border: none;
+  border-radius: 50px;
+  padding: 10px 20px;
+  color: var(--text-dark);
+  font-size: 36px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 40px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.idscanner-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.idscanner-frame {
+  position: relative;
+  width: 440px;
+  height: 300px;
+  border: 2px dashed #b0bec5;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.id-illustration {
+  width: 300px;
+  height: 200px;
+  background-color: #e3f2fd;
+  border-radius: 8px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.id-photo {
+  width: 40px;
+  height: 40px;
+  background-color: #b0bec5;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.id-text {
+  width: 100px;
+  height: 10px;
+  background-color: #b0bec5;
+  border-radius: 4px;
+}
+
+.scan-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, transparent, var(--primary-blue), transparent);
+  animation: scan 2s infinite;
+}
+
+@keyframes scan {
+  0% {
+    transform: translateY(-50px);
+  }
+  50% {
+    transform: translateY(50px);
+  }
+  100% {
+    transform: translateY(-50px);
+  }
+}
+
+.instructions {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.instructions-title {
+  font-size: 38px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+}
+
+.instructions-text {
+  font-size: 26px;
+  color: #666;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.scan-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: linear-gradient(to right, rgb(12 151 255 / 87%), rgb(12 151 255 / 60%));
+  border: none;
+  border-radius: 20px;
+  padding: 30px;
+  width: 100%;
+  color: var(--white);
+  font-size: 38px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.scan-button:hover {
+  background: linear-gradient(to right, rgb(12 151 255 / 60%), rgb(12 151 255 / 87%));
+}
+

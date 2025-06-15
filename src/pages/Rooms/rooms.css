@@ -1,0 +1,145 @@
+.rooms-background {
+  
+  background: 
+    linear-gradient(to bottom, rgba(0, 0, 0, 0) 500px, #1E1E1E 500px),
+    url('../../assets/images/bookingdetails/bookingtop.png') no-repeat top center;
+  background-size: contain;
+  height: 100vh;
+}
+
+
+.booking-page {
+  font-family: 'Sora', 'Bricolage Grotesque', sans-serif;
+  color: white;
+  padding: 60px;
+  min-height: 25vh;
+}
+
+.rooms-header {
+  display: flex;
+  align-items: center;
+gap:95px;
+  position: relative;
+  margin-left: 60px;
+}
+
+.icon-title {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 50px;
+  font-weight: 500;
+}
+
+.help-btn {
+  background: #065e94;
+  border-radius: 20px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.room-type-section {
+  margin-top: 100px;
+}
+
+.room-type-section h2 {
+  font-size: 60px;
+  margin-bottom: 20px;
+  font-weight: 300;
+}
+
+.filters {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.filters button {
+  background: #FFFFFF99;
+  border: none;
+  padding: 30px;
+  border-radius: 12px;
+  color: white;
+  cursor: pointer;
+  font-size: 36px;
+}
+
+.filters .active {
+  background: #F5F8FA;
+  color: #007ad9;
+}
+
+.available-suits {
+  margin-top: 40px;
+}
+
+.available-suits h3 {
+  color: #FFFFFF99;
+  font-size: 40px;
+  margin-bottom: 15px;
+  margin-left: 40px;
+}
+
+.room-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin: 50px;
+}
+
+.room-card {
+  background: #F5F8FA;
+  color: black;
+  border-radius: 36px;
+  overflow: hidden;
+}
+
+.room-img {
+margin: 30px;
+width: 415px;
+border-radius: 20px;
+}
+
+.room-info {
+  padding: 15px;
+}
+
+.room-info h4 {
+  font-size: 45px;
+  margin: 0;
+}
+
+.room-info p {
+  margin: 5px 0 10px;
+  color: #555;
+  font-size: 25px;
+}
+
+.room-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price {
+  font-size: 40px;
+  font-weight: bold;
+  color: #007aff;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.next-btn {
+  background: #87caff;
+  border: none;
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+

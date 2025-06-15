@@ -1,0 +1,510 @@
+.review-page {
+  min-height: 100vh;
+  width: 100%;
+  background:url('/assets/images/bookingdetails/bookingtop.png') no-repeat top center;
+  padding-bottom: 20px;
+  background-size: contain;
+}
+
+.review-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+}
+
+.home-icon {
+  background-color: var(--white);
+  border-radius: 12px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16px;
+}
+
+.review-title {
+  color: var(--white);
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.help-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 50px;
+  padding: 10px 20px;
+  color: var(--white);
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.review-card {
+  background-color: var(--white);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--white);
+  border: none;
+  border-radius: 50px;
+  padding: 10px 20px;
+  color: var(--text-dark);
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.room-summary {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  margin-bottom: 30px;
+}
+
+.room-image-container {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  gap:50px;
+}
+
+.room-image {
+  width: 220px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.room-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.booking-id {
+  margin-bottom: 8px;
+}
+
+.id-label {
+  font-size: 12px;
+  color: #666;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.id-value-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.id-value {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.pending-badge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: #f9a825;
+  font-weight: 500;
+}
+
+.pending-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #f9a825;
+  border-radius: 50%;
+}
+
+.room-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+
+.room-description {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.room-price {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.details-section {
+  margin-bottom: 30px;
+}
+
+/* Keyboard active state - reduce margin */
+.details-section.keyboard-active {
+  margin-bottom: 0px;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+}
+
+.details-content {
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  padding: 20px;
+  position: relative;
+}
+.details-content-payment {
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  padding: 20px;
+  position: relative;
+  display: flex;
+  gap:200px;
+}
+.detail-row-payment{
+     display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  flex-direction: column;
+}
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.detail-row:last-child {
+  margin-bottom: 0;
+}
+
+.detail-row.with-edit {
+  align-items: center;
+}
+
+.cr-detail-label {
+  font-size: 14px;
+  color: #666;
+}
+
+.cr-detail-value {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-dark);
+  display: inline-block;
+  border: none;
+  background: inherit;
+
+}
+.cr-guestdetail-value{
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-dark);
+  display: inline-block;
+  border: none;
+  background: inherit;
+  text-align: right;
+}
+
+.cr-detail-value:active,
+.cr-detail-value:focus {
+  outline: none;
+  color: var(--text-dark);
+  display: inline-block;
+  border: none;
+  background: inherit;
+}
+.edit-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--white);
+  border: 1px solid #000000;
+  border-radius: 15px;
+  padding: 8px 16px;
+  color: var(--text-dark);
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  margin:10px auto;
+  padding: 20px 250px;
+}
+
+.small-edit-button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background-color: var(--white);
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 6px 12px;
+  color: var(--text-dark);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.detail-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.detail-col-split {
+  display: flex;
+  gap: 40px;
+}
+
+.detail-col-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.price-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.current-price {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.original-price {
+  font-size: 14px;
+  color: #999;
+  text-decoration: line-through;
+}
+
+.payment-method {
+  margin-top: 16px;
+}
+
+.payment-method-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkbox-container {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.checkbox-input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkbox-custom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+}
+
+.checkbox-container.blue .checkbox-custom {
+  border-color: var(--primary-blue);
+}
+
+.checkbox-input:checked + .checkbox-custom {
+  background-color: var(--primary-blue);
+  border-color: var(--primary-blue);
+}
+
+.checkbox-input:checked + .checkbox-custom::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.payment-method-text {
+  font-size: 16px;
+  color: var(--text-dark);
+}
+
+.price-summary {
+  background-color: #002244;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 20px 0;
+}
+
+/* Hide price summary when keyboard is visible */
+.price-summary.keyboard-hidden {
+  display: none;
+}
+
+.price-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.price-amount {
+  font-size: 24px;
+  font-weight: 600;
+  color: white;
+}
+
+.price-details {
+  font-size: 14px;
+  color: #b0bec5;
+}
+
+.confirm-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: var(--primary-blue);
+  border: none;
+  border-radius: 8px;
+  padding: 16px;
+  width: 100%;
+  color: var(--white);
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.confirm-button:hover {
+  background-color: #1976d2;
+}
+
+.help-section {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.help-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.help-icon {
+  color: var(--primary-blue);
+}
+
+.help-text {
+  flex: 1;
+}
+
+.help-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: white;
+  margin-bottom: 4px;
+}
+
+.help-description {
+  font-size: 14px;
+  color: #b0bec5;
+}
+
+.help-arrow {
+  color: white;
+}
+
+
+.date-inputs {
+  display: flex;
+  gap: 10px;
+}
+
+.date-edit-inputs input {
+  padding: 5px;
+  font-size: 14px;
+}
+
+.cr-date-picker{
+   padding: 5px;
+  font-size: 24px;
+  background-color: inherit;
+  border: none;
+-webkit-appearance: none; /* For Safari/Chrome */
+  appearance: none;    
+}
+.cr-date-picker:active,
+.cr-date-picker:focus,
+.cr-date-picker:hover,
+.cr-date-picker:focus-within {
+  outline: none;
+  box-shadow: none;
+  border: none;
+}
+
+
+@media (max-width: 768px) {
+  .room-summary {
+    flex-direction: column;
+  }
+
+  .room-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .detail-col-split {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .review-title {
+    font-size: 24px;
+  }
+}

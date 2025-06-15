@@ -1,0 +1,293 @@
+/* .assign-room-container {
+  max-width: 100%;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  margin-top: 200px;
+}
+
+.checkIn {
+  font-size: 3rem;
+  color: #333;
+}
+.room-p{
+    font-size: 1.5rem;
+}
+.room-card p {
+  font-size: 1.5rem;
+}
+
+.room-selection {
+  margin-top: 20px;
+}
+
+select {
+  width: 60%;
+  padding: 15px;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.assignbutton {
+  padding: 15px 30px;
+  font-size: 2.5rem;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.assignbutton:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.video-guide {
+  margin-top: 40px;
+}
+
+.video-guide h3 {
+  font-size: 2rem;
+}
+
+video {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+
+.room-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+  margin: 50px auto;
+  max-width: 85%;
+  max-height: 40vh;
+  overflow: scroll;
+}
+
+.room-card {
+  background: #fff;
+  border: 2px solid #f40eb7;
+  padding: 15px;
+  border-radius: 10px;
+  width: 250px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.room-card:hover {
+  background: #f5f5f5;
+  transform: scale(1.05);
+}
+
+.room-card h3 {
+  margin: 10px 0;
+  color: #333;
+}
+
+.room-card p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.checkIn {
+  font-size: 3rem;
+}
+
+.loading-container {
+  height: 30vh;
+} */
+
+
+
+
+/* 
+@media screen and (min-width: 1920px) {
+  .assign-room-container {
+    max-width: 70%;
+  }
+
+  h2 {
+    font-size: 4rem;
+  }
+
+  p,
+  select,
+  button {
+    font-size: 2rem;
+  }
+
+  button {
+    padding: 20px 40px;
+  }
+
+  .video-guide h3 {
+    font-size: 2.5rem;
+  }
+} 
+*/
+.assignRoom_container_container{
+ min-height: 100vh;
+  width: 100%;
+ background:url('/assets/images/bookingdetails/bookingtop.png') no-repeat top center;
+  background-size: contain;
+
+}
+
+.assignRoom_container {
+  max-width: 100%;
+  text-align: center;
+  font-family: inherit;
+  padding:40px;
+
+}
+
+.assignRoom_title {
+  font-size: 3rem;
+  color:#ffffff;
+}
+
+.assignRoom_instruction {
+  font-size: 2rem;
+  color:#ffffff;
+  margin-top: 20px;
+}
+
+.assignRoom_roomCard p {
+  font-size: 1.5rem;
+}
+
+.assignRoom_button {
+  padding: 15px 30px;
+  font-size: 2.5rem;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.assignRoom_button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.assignRoom_videoGuide {
+  margin-top: 40px;
+}
+
+.assignRoom_videoGuide h3 {
+  font-size: 2rem;
+}
+
+.assignRoom_roomList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+  margin: 50px auto;
+  max-width: 85%;
+  max-height: 40vh;
+  overflow: scroll;
+    scrollbar-width: none;         /* Firefox */
+  -ms-overflow-style: none;      /* IE 10+ */
+}
+
+
+
+.assignRoom_roomList::-webkit-scrollbar {
+  display: none;                 /* Chrome, Safari */
+}
+.assignRoom_roomCard {
+  background: #fff;
+  border: 2px solid #f40eb7;
+  padding: 15px;
+  border-radius: 10px;
+  width: 250px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.assignRoom_roomCard:hover {
+  background: #f5f5f5;
+  transform: scale(1.05);
+}
+
+.assignRoom_roomCard h3 {
+  margin: 10px 0;
+  color: #333;
+  text-align: center;
+}
+
+.assignRoom_roomCard p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.assignRoom_assigned {
+  margin-top: 30px;
+}
+
+.loading-container {
+  height: 30vh;
+}
+
+.assignRoom-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 100px;
+  gap:120px;
+ 
+}
+
+/* .logo-section {
+  display: flex;
+  align-items: center;
+} */
+
+/* .home-icon-id {
+  background-color: var(--white);
+  border-radius: 12px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16px;
+} */
+
+.assignRoom-title {
+  color: var(--white);
+  font-size: 52px;
+  font-weight: 600;
+  margin-left: 30px;
+}
+
+/* .help-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 50px;
+  padding: 10px 20px;
+  color: var(--white);
+  font-size: 16px;
+  cursor: pointer;
+} */
