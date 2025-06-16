@@ -57,6 +57,7 @@ import SignUser from './pages/SignUser/SignUser.jsx'
 import VerifyUser from './pages/VerifyUser/VerifyUser.jsx'
 import SearchReservation from './pages/SearchReservation/SearchReservation.jsx'
 import CheckOut from './pages/CheckOut/CheckOut.jsx'
+import ReassignRoom from './pages/ReassignRooms/ReassignRoom.jsx'
 function App() {
   return (
     <Router>
@@ -80,6 +81,7 @@ function App() {
          <Route path="/search-reservation" element={<SearchReservation />} />
           <Route path="/verify-user" element={<VerifyUser />} />
           <Route path="/check-out" element={<CheckOut />} />
+          <Route path="/reassign-room" element={<ReassignRoom />} />
       </Routes>
     </Router>
   )
