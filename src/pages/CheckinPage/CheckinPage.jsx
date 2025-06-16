@@ -125,56 +125,40 @@ const CheckinPage = () => {
   return (
     <>
         <Header/>
-      <div className="checkin-container">
-        <h2>Check In</h2>
-        <div className="video-guide">
-          <video autoPlay loop muted width="50%">
-            <source src="/videos/Checkin.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
+      <div className="checkinpg-container">
+  <h2 className="checkinpg-heading">Check In</h2>
+  <div className="checkinpg-video-guide">
+    ...
+  </div>
 
-        {loading ? (
-          <p className="loading-text">Processing check-in...</p>
-        ) : successfulCheckin ? (
-          <div className="checkin-success">
-            <h3>Check-in Successful!</h3>
-            {successRoomNames.length === 1 ? (
-              <h3>Your room is: {successRoomNames[0]}</h3>
-            ) : (
-              <h2>Your rooms are: {successRoomNames.join(", ")}</h2>
-            )}
-            <div className="error-options">
-              <button className="btn reassign-btn" onClick={() => navigate("/change-room")}>Change Room</button>
-              <button className="btn reassign-btn" onClick={() => navigate("/sign-user")}>Proceed</button>
-            </div>
-          </div>
-        ) : (
-          <>
-            {roomOccupied.length > 0 && (
-              <div className="checkin-failed">
-                {successRoomNames.length > 0 && (
-                  <h3>Successfully Checked-in to: {successRoomNames.join(", ")}</h3>
-                )}
-                {failedRoomNames.length > 0 && (
-                  <h3>Failed to Check-in to: {failedRoomNames.join(", ")}</h3>
-                )}
-                {roomOccupied.length === 1 ? (
-                  <h3>Your room {roomOccupied[0]} is currently occupied</h3>
-                ) : (
-                  <h2>Your rooms {roomOccupied.join(", ")} are currently occupied</h2>
-                )}
-              </div>
-            )}
-
-            <div className="error-options">
-              <button className="btn wait-btn" onClick={() => navigate("/")}>Wait</button>
-              <button className="btn reassign-btn" onClick={() => navigate("/reassign-room")}>Change Room</button>
-              <button className="btn reassign-btn" onClick={() => navigate("/sign-user")}>Proceed</button>
-            </div>
-          </>
-        )}
+  {loading ? (
+    <p className="checkinpg-loading-text">Processing check-in...</p>
+  ) : successfulCheckin ? (
+    <div className="checkinpg-success">
+      <h3>Check-in Successful!</h3>
+      ...
+      <div className="checkinpg-error-options">
+        <button className="checkinpg-btn checkinpg-reassign-btn" onClick={() => navigate("/change-room")}>Change Room</button>
+        <button className="checkinpg-btn checkinpg-reassign-btn" onClick={() => navigate("/sign-user")}>Proceed</button>
       </div>
+    </div>
+  ) : (
+    <>
+      {roomOccupied.length > 0 && (
+        <div className="checkinpg-failed">
+          ...
+        </div>
+      )}
+
+      <div className="checkinpg-error-options">
+        <button className="checkinpg-btn checkinpg-wait-btn" onClick={() => navigate("/")}>Wait</button>
+        <button className="checkinpg-btn checkinpg-reassign-btn" onClick={() => navigate("/reassign-room")}>Change Room</button>
+        <button className="checkinpg-btn checkinpg-reassign-btn" onClick={() => navigate("/sign-user")}>Proceed</button>
+      </div>
+    </>
+  )}
+</div>
+
      <HelpFooter />
            <Toaster />
     </>

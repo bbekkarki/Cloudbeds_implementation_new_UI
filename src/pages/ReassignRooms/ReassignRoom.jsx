@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "../CheckinPage/CheckinPage.css"; // Reusing AssignRooms styling
+import "../CheckInSuccess/CheckInSuccess.css"; // Reusing AssignRooms styling
 import Loading from "../../components/Loading/Loading";
 import { Toaster, toast } from "react-hot-toast";
 import HelpFooter from "../../components/HelpFooter/HelpFooter";
