@@ -6,6 +6,7 @@ import HelpFooter from "../../components/HelpFooter/HelpFooter";
 import { API_KEY, BASE_API_URL, propertyID } from "../../components/constants/constants";
 
 
+
 const maskPhone = (phone) => {
   console.log(phone);
   if (!phone) return phone;
@@ -32,7 +33,7 @@ const SearchReservation = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-
+const [checkout, setCheckout] = useState(sessionStorage.getItem("checkout"));
   const fetchDetailedReservation = async (reservationID) => {
     try {
       sessionStorage.setItem("reservationID", reservationID);
@@ -78,10 +79,16 @@ const SearchReservation = () => {
   };
 
   useEffect(() => {
+    
     const reservationID = sessionStorage.getItem("reservationID");
     fetchDetailedReservation(reservationID);
   }, []);
-
+// Whenever sessionStorage changes (after async fetch), sync state
+useEffect(() => {
+  const storedCheckout = sessionStorage.getItem("checkout");
+  setCheckout(storedCheckout);
+}, [loading]);
+ // Or trigger it again when loading completes
   useEffect(() => {
     if (!loading && !detailedReservation) {
       const timeout = setTimeout(() => {
@@ -92,9 +99,15 @@ const SearchReservation = () => {
   }, [loading, detailedReservation, navigate]);
 
   const handleNextStep = () => {
+    // alert(checkout);
     const balance = detailedReservation?.balance || 0;
     if (balance <= 0) {
-      navigate("/assign-room");
+      if (checkout) {
+        navigate("/check-out");
+      }else{
+    navigate("/assign-room");
+      }
+  
     } else {
       navigate("/payment");
     }
@@ -226,7 +239,7 @@ const handleHomeClick = () => {
         </div>
         <div className="reservation-button-container">
           <button className="reservation-button" onClick={handleNextStep}>
-            {balance <= 0 ? "Continue to Check-In" : "Continue to Payment"}
+           {balance <= 0 ? (checkout ? "Continue to Check-Out" : "Continue to Check-In") : "Continue to Payment"}
           </button>
         </div>
       </div>

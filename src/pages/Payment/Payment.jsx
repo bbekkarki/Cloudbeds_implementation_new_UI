@@ -57,7 +57,7 @@ export default function Payment() {
   const navigate = useNavigate();
   const reservationID = sessionStorage.getItem("reservationID");
   const propertyID = "317150";
-
+const checkout = sessionStorage.getItem("checkout");
 //for testing flow 
 
 useEffect(() => {
@@ -148,6 +148,9 @@ useEffect(() => {
 
       if (response.data.success) {
         toast.success("Payment processed successfully");
+        if (checkout) {
+          navigate("/check-out");
+        }
         navigate("/assign-room");
       } else {
         throw new Error("Payment failed");

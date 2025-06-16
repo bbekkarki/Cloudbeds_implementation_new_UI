@@ -56,6 +56,7 @@ import SelfieApp from './pages/SelfieApp/SelfieApp.jsx'
 import SignUser from './pages/SignUser/SignUser.jsx'
 import VerifyUser from './pages/VerifyUser/VerifyUser.jsx'
 import SearchReservation from './pages/SearchReservation/SearchReservation.jsx'
+import CheckOut from './pages/CheckOut/CheckOut.jsx'
 function App() {
   return (
     <Router>
@@ -78,6 +79,7 @@ function App() {
          <Route path="/sign-user" element={<SignUser />} />
          <Route path="/search-reservation" element={<SearchReservation />} />
           <Route path="/verify-user" element={<VerifyUser />} />
+          <Route path="/check-out" element={<CheckOut />} />
       </Routes>
     </Router>
   )

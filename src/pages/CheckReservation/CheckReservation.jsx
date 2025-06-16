@@ -20,6 +20,12 @@ const handleWalkIn = () => {
     navigate('/booking-form');
 }
 
+const handleCheckOut = () => {
+  sessionStorage.setItem('checkout', 'true');
+    navigate('/id-verification');
+}
+
+
   return (
     <div className="app-container">
       <img src={screen01Decor1} alt="Kiosk decor 1" className="screen01-decor-1" />
@@ -42,7 +48,7 @@ const handleWalkIn = () => {
           <img src={checkinIcon} alt="Check-In Icon" />
         </button>
 
-        <button className="option-button">
+        <button className="option-button" onClick={handleCheckOut}>
           <div className="text-group">
             <span>Check-Out</span>
             <small style={{ fontSize: '35px' }}>Modify Booking</small>
