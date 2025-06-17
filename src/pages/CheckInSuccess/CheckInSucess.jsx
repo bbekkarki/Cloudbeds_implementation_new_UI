@@ -296,9 +296,296 @@
 // }
 
 
+// import { useState, useEffect } from "react";
+// import { useNavigate } from "react-router-dom";
+// import { Check, Printer, Key, Wifi, Clock } from "lucide-react";
+// import "./CheckInSuccess.css";
+// import Header from "../../components/Header/header";
+// import HelpFooter from "../../components/HelpFooter/HelpFooter";
+// import { API_KEY, BASE_API_URL, propertyID } from "../../components/constants/constants";
+// import axios from "axios";
+
+// export default function CheckInSuccess() {
+//   const [roomNames, setRoomNames] = useState([]);
+//   const [checkoutDate, setCheckoutDate] = useState("");
+//   const [wifiPassword, setWifiPassword] = useState("");
+//   const [isPrinting, setIsPrinting] = useState(false);
+//   const [isDispensing, setIsDispensing] = useState(false);
+//   const [loading, setLoading] = useState(true);
+//   const [errorMessage, setErrorMessage] = useState("");
+//   const [successfulCheckin, setSuccessfulCheckin] = useState(false);
+//   const [roomOccupied, setRoomOccupied] = useState([]);
+//   const [failedRoomNames, setFailedRoomNames] = useState([]);
+//   const [successRoomNames, setSuccessRoomNames] = useState([]);
+
+//   const navigate = useNavigate();
+//   const reservationID = sessionStorage.getItem("reservationID");
+
+//   useEffect(() => {
+//     const occupiedRooms = [];
+//     let tempCheckedInRooms = [];
+//     let tempFailedRoomNames = [];
+//     let tempSuccessRoomNames = [];
+
+//     const checkInUser = async (roomName, roomID, subReservationID) => {
+//       try {
+//         const response = await axios.post(
+//           `${BASE_API_URL}/room/checkin`,
+//           new URLSearchParams({
+//             reservationID,
+//             subReservationID,
+//             propertyID,
+//             roomID,
+//           }),
+//           {
+//             headers: {
+//               accept: "application/json",
+//               authorization: `Bearer ${API_KEY}`,
+//               "content-type": "application/x-www-form-urlencoded",
+//               "x-api-key": API_KEY,
+//             },
+//           }
+//         );
+
+//         if (response.data.success || response.data.message === "Room already in-house. Nothing was done.") {
+//           console.log(`Room ${roomName} checked in successfully`);
+//           tempCheckedInRooms.push(roomID);
+//           tempSuccessRoomNames.push(roomName);
+//         } else if (response.data.message.includes("You cannot check this reservation in until the reservation currently assigned to this room is checked out")) {
+//           occupiedRooms.push(roomID);
+//           tempFailedRoomNames.push(roomName);
+//         } else {
+//           tempFailedRoomNames.push(roomName);
+//         }
+//       } catch (error) {
+//         console.error("Check-in error:", error);
+//         tempFailedRoomNames.push(roomName);
+//       }
+//     };
+
+//     const fetchReservationDetails = async () => {
+//       try {
+//         // First, attempt check-in
+//         const response = await axios.get(
+//           `${BASE_API_URL}/getReservation?reservationID=${reservationID}`,
+//           {
+//             headers: {
+//               accept: "application/json",
+//               authorization: `Bearer ${API_KEY}`,
+//               "x-api-key": API_KEY,
+//             },
+//           }
+//         );
+//         const reservationData = response.data.data;
+
+//         if (reservationData.assigned && reservationData.assigned.length > 0) {
+//           for (let i = 0; i < Math.min(10, reservationData.assigned.length); i++) {
+//             await checkInUser(
+//               reservationData.assigned[i].roomName,
+//               reservationData.assigned[i].roomID,
+//               reservationData.assigned[i].subReservationID
+//             );
+//           }
+
+//           if (occupiedRooms.length > 0) {
+//             sessionStorage.setItem("occupiedRooms", JSON.stringify(occupiedRooms));
+//             sessionStorage.setItem("SuccessRoomNames", JSON.stringify(tempSuccessRoomNames));
+//             sessionStorage.setItem("FailedRoomNames", JSON.stringify(tempFailedRoomNames));
+//             setRoomOccupied([...occupiedRooms]);
+//             setSuccessRoomNames([...tempSuccessRoomNames]);
+//             setFailedRoomNames([...tempFailedRoomNames]);
+//             setRoomNames([...tempSuccessRoomNames]);
+//           } else {
+//             sessionStorage.setItem("SuccessRoomNames", JSON.stringify(tempSuccessRoomNames));
+//             sessionStorage.setItem("FailedRoomNames", JSON.stringify(tempFailedRoomNames));
+//             setSuccessRoomNames([...tempSuccessRoomNames]);
+//             setFailedRoomNames([...tempFailedRoomNames]);
+//             setRoomNames([...tempSuccessRoomNames]);
+//             if (tempCheckedInRooms.length > 0) {
+//               setSuccessfulCheckin(true);
+//             }
+//           }
+//         } else {
+//           setErrorMessage("No rooms assigned for check-in.");
+//         }
+
+//         // Get checkout date
+//         const storedCheckout = sessionStorage.getItem("checkoutDate");
+//         if (storedCheckout) {
+//           setCheckoutDate(storedCheckout);
+//         } else if (reservationData.endDate) {
+//           setCheckoutDate(reservationData.endDate);
+//           sessionStorage.setItem("checkoutDate", reservationData.endDate);
+//         }
+
+//         // Generate wifi password
+//         const randomPassword = Math.random().toString(36).slice(2, 10).toUpperCase();
+//         setWifiPassword(randomPassword);
+//         sessionStorage.setItem("wifiPassword", randomPassword);
+
+//       } catch (error) {
+//         console.error("Error fetching reservation details:", error);
+//         setErrorMessage("Failed to fetch reservation details.");
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+
+//     fetchReservationDetails();
+//   }, [reservationID, navigate]);
+
+//   const handlePrintReceipt = () => {
+//     setIsPrinting(true);
+//     console.log("Printing receipt...");
+    
+//     setTimeout(() => {
+//       setIsPrinting(false);
+//       console.log("Receipt printed");
+//     }, 1500);
+//   };
+
+//   const handleDispenseKey = () => {
+//     setIsDispensing(true);
+//     console.log("Dispensing key...");
+    
+//     if (window.chrome?.webview) {
+//       window.chrome.webview.postMessage(
+//         JSON.stringify({ 
+//           command: "dispense-key", 
+//           rooms: roomNames 
+//         })
+//       );
+//     }
+    
+//     setTimeout(() => {
+//       setIsDispensing(false);
+//       console.log("Key dispensed");
+//     }, 2000);
+//   };
+
+//   return (
+//     <div className="checkin-page">
+//       <div className="checkin-container">
+//         <Header value="CheckIn" />
+//         <div className="checkin-card">
+//           {loading ? (
+//             <p className="loading-text">Processing check-in...</p>
+//           ) : errorMessage ? (
+//             <div className="checkin-failed">
+//               <h3>{errorMessage}</h3>
+//               <div className="error-options">
+//                 <button className="checkin-button" onClick={() => navigate("/reassign-room")}>
+//                   Change Room
+//                 </button>
+//                 <button className="checkin-button" onClick={() => navigate("/")}>
+//                   Wait
+//                 </button>
+//               </div>
+//             </div>
+//           ) : (
+//             <>
+//               <h2 className="success-heading">Check-In {successfulCheckin ? "Success!" : "Status"}</h2>
+//               <p className="welcome-message">Welcome to Kiotel</p>
+
+//               <div className="success-icon-container">
+//                 <div className="success-icon">
+//                   <Check color="white" size={32} />
+//                 </div>
+//               </div>
+
+//               <div className="room-info">
+//                 {roomNames.length > 0 ? (
+//                   <>
+//                     <h3 className="room-number">
+//                       {roomNames.length === 1 
+//                         ? `Room ${roomNames[0]}` 
+//                         : `Rooms: ${roomNames.join(", ")}`}
+//                     </h3>
+//                     <p className="room-location">
+//                       {roomNames.length === 1 ? "3rd Floor, Ocean View" : "Multiple Rooms"}
+//                     </p>
+//                   </>
+//                 ) : (
+//                   <h3 className="room-number">No rooms assigned</h3>
+//                 )}
+//                 {failedRoomNames.length > 0 && (
+//                   <p className="room-number">
+//                     Failed to check-in: {failedRoomNames.join(", ")}
+//                   </p>
+//                 )}
+//                 {roomOccupied.length > 0 && (
+//                   <p className="room-number">
+//                     Occupied rooms: {roomOccupied.join(", ")}
+//                   </p>
+//                 )}
+//               </div>
+
+//               <div className="details-container">
+//                 <div className="detail-row">
+//                   <div className="detail-icon">
+//                     <Wifi size={20} />
+//                   </div>
+//                   <div className="checkin-detail-label">Wi-Fi Password</div>
+//                   <div className="checkin-detail-value">
+//                     {wifiPassword || "Generating..."}
+//                   </div>
+//                 </div>
+//                 <div className="detail-row">
+//                   <div className="detail-icon">
+//                     <Clock size={20} />
+//                   </div>
+//                   <div className="checkin-detail-label">Check-Out</div>
+//                   <div className="checkin-detail-value">
+//                     {checkoutDate || "Loading..."}
+//                   </div>
+//                 </div>
+//               </div>
+
+//               <div className="checkin-action-buttons">
+//                 <button 
+//                   className={`receipt-print-button ${isPrinting ? "printing" : ""}`}
+//                   onClick={handlePrintReceipt}
+//                   disabled={isPrinting}
+//                 >
+//                   <Printer size={20} />
+//                   <span>{isPrinting ? "Printing..." : "Print"}</span>
+//                 </button>
+//                 <button 
+//                   className={`checkin-button ${isDispensing ? "dispensing" : ""}`}
+//                   onClick={handleDispenseKey}
+//                   disabled={isDispensing}
+//                 >
+//                   <Key size={20} />
+//                   <span>
+//                     {isDispensing ? "Dispensing..." : "Dispense Key Again"}
+//                   </span>
+//                 </button>
+//                 {roomOccupied.length > 0 && (
+//                   <button 
+//                     className="checkin-button"
+//                     onClick={() => navigate("/reassign-room")}
+//                   >
+//                     Change Room
+//                   </button>
+//                 )}
+//               </div>
+//             </>
+//           )}
+//         </div>
+//         <HelpFooter />
+//       </div>
+//     </div>
+//   );
+// }
+
+
+
+
+
+
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Check, Printer, Key, Wifi, Clock } from "lucide-react";
+import { Check, Key, Wifi, Clock, UserPlus } from "lucide-react";
 import "./CheckInSuccess.css";
 import Header from "../../components/Header/header";
 import HelpFooter from "../../components/HelpFooter/HelpFooter";
@@ -309,7 +596,6 @@ export default function CheckInSuccess() {
   const [roomNames, setRoomNames] = useState([]);
   const [checkoutDate, setCheckoutDate] = useState("");
   const [wifiPassword, setWifiPassword] = useState("");
-  const [isPrinting, setIsPrinting] = useState(false);
   const [isDispensing, setIsDispensing] = useState(false);
   const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
@@ -348,7 +634,6 @@ export default function CheckInSuccess() {
         );
 
         if (response.data.success || response.data.message === "Room already in-house. Nothing was done.") {
-          console.log(`Room ${roomName} checked in successfully`);
           tempCheckedInRooms.push(roomID);
           tempSuccessRoomNames.push(roomName);
         } else if (response.data.message.includes("You cannot check this reservation in until the reservation currently assigned to this room is checked out")) {
@@ -365,7 +650,6 @@ export default function CheckInSuccess() {
 
     const fetchReservationDetails = async () => {
       try {
-        // First, attempt check-in
         const response = await axios.get(
           `${BASE_API_URL}/getReservation?reservationID=${reservationID}`,
           {
@@ -409,7 +693,6 @@ export default function CheckInSuccess() {
           setErrorMessage("No rooms assigned for check-in.");
         }
 
-        // Get checkout date
         const storedCheckout = sessionStorage.getItem("checkoutDate");
         if (storedCheckout) {
           setCheckoutDate(storedCheckout);
@@ -418,7 +701,6 @@ export default function CheckInSuccess() {
           sessionStorage.setItem("checkoutDate", reservationData.endDate);
         }
 
-        // Generate wifi password
         const randomPassword = Math.random().toString(36).slice(2, 10).toUpperCase();
         setWifiPassword(randomPassword);
         sessionStorage.setItem("wifiPassword", randomPassword);
@@ -434,20 +716,8 @@ export default function CheckInSuccess() {
     fetchReservationDetails();
   }, [reservationID, navigate]);
 
-  const handlePrintReceipt = () => {
-    setIsPrinting(true);
-    console.log("Printing receipt...");
-    
-    setTimeout(() => {
-      setIsPrinting(false);
-      console.log("Receipt printed");
-    }, 1500);
-  };
-
   const handleDispenseKey = () => {
     setIsDispensing(true);
-    console.log("Dispensing key...");
-    
     if (window.chrome?.webview) {
       window.chrome.webview.postMessage(
         JSON.stringify({ 
@@ -456,10 +726,8 @@ export default function CheckInSuccess() {
         })
       );
     }
-    
     setTimeout(() => {
       setIsDispensing(false);
-      console.log("Key dispensed");
     }, 2000);
   };
 
@@ -523,7 +791,7 @@ export default function CheckInSuccess() {
               <div className="details-container">
                 <div className="detail-row">
                   <div className="detail-icon">
-                    <Wifi size={20} />
+                    <Wifi size={35} />
                   </div>
                   <div className="checkin-detail-label">Wi-Fi Password</div>
                   <div className="checkin-detail-value">
@@ -532,7 +800,7 @@ export default function CheckInSuccess() {
                 </div>
                 <div className="detail-row">
                   <div className="detail-icon">
-                    <Clock size={20} />
+                    <Clock size={35} />
                   </div>
                   <div className="checkin-detail-label">Check-Out</div>
                   <div className="checkin-detail-value">
@@ -543,23 +811,24 @@ export default function CheckInSuccess() {
 
               <div className="checkin-action-buttons">
                 <button 
-                  className={`receipt-print-button ${isPrinting ? "printing" : ""}`}
-                  onClick={handlePrintReceipt}
-                  disabled={isPrinting}
+                  className="receipt-print-button"
+                  onClick={() => navigate("/add-guest")}
                 >
-                  <Printer size={20} />
-                  <span>{isPrinting ? "Printing..." : "Print"}</span>
+                  <UserPlus size={35} />
+                  <span>Add Guest</span>
                 </button>
+
                 <button 
                   className={`checkin-button ${isDispensing ? "dispensing" : ""}`}
                   onClick={handleDispenseKey}
                   disabled={isDispensing}
                 >
-                  <Key size={20} />
+                  <Key size={35} />
                   <span>
                     {isDispensing ? "Dispensing..." : "Dispense Key Again"}
                   </span>
                 </button>
+
                 {roomOccupied.length > 0 && (
                   <button 
                     className="checkin-button"
