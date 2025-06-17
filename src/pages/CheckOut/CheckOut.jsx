@@ -1089,7 +1089,7 @@
 
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Check, Printer, LogOut, Clock } from "lucide-react";
+import { Check, Printer, LogOut, Clock,MessageSquare  } from "lucide-react";
 import "./CheckOut.css";
 import Header from "../../components/Header/header";
 import HelpFooter from "../../components/HelpFooter/HelpFooter";
@@ -1294,8 +1294,15 @@ export default function CheckOut() {
                   <Printer size={20} />
                   <span>{isPrinting ? "Printing..." : "Print Receipt"}</span>
                 </button>
-
+    <button
+  className="checkin-button"
+  onClick={() => navigate("/feedback")}
+>
+  <MessageSquare size={20} />
+  <span>Give Feedback</span>
+</button>
                 {failedRoomNames.length > 0 && (
+                  <>
                   <button
                     className={`checkin-button ${isCheckingOut ? "dispensing" : ""}`}
                     onClick={handleManualCheckout}
@@ -1304,6 +1311,8 @@ export default function CheckOut() {
                     <LogOut size={20} />
                     <span>{isCheckingOut ? "Retrying..." : "Try Again"}</span>
                   </button>
+              
+                  </>
                 )}
               </div>
             </>

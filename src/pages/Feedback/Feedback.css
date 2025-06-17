@@ -1,0 +1,49 @@
+/* Add these to CheckOut.css if not already present */
+
+.rating-container {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 1rem;
+}
+
+.star-icon {
+  cursor: pointer;
+  transition: transform 0.2s;
+  margin-top: 4rem;
+}
+.star-icon:hover {
+  transform: scale(1.1);
+}
+
+.feedback-textarea {
+  width: 500px;
+  height: 200px;
+  margin-bottom: 2rem;
+  margin-top: 3rem;
+  padding: 10px;
+  border-radius: 0.5rem;
+  border: 1px solid #000000;
+  font-size: 2rem;
+  resize: vertical;
+}
+
+.feedback-icon {
+  width: 200px;
+  height: 200px;
+  background-color: #2ecc71;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.feedback-icon-container {
+  width: 300px;
+  height: 300px;
+  background-color: rgba(46, 204, 113, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}

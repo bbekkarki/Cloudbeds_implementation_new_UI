@@ -59,6 +59,7 @@ import SearchReservation from './pages/SearchReservation/SearchReservation.jsx'
 import CheckOut from './pages/CheckOut/CheckOut.jsx'
 import ReassignRoom from './pages/ReassignRooms/ReassignRoom.jsx'
 import AddGuest from './pages/AddGuest/AddGuest.jsx'
+import Feedback from './pages/Feedback/Feedback.jsx'
 function App() {
   return (
     <Router>
@@ -84,6 +85,7 @@ function App() {
           <Route path="/check-out" element={<CheckOut />} />
           <Route path="/reassign-room" element={<ReassignRoom />} />
         <Route path="/add-guest" element={<AddGuest />} />
+        <Route path="/feedback" element={<Feedback />} />
       </Routes>
     </Router>
   )
